@@ -74,17 +74,8 @@ export default function CreateListForm() {
                 formData.append('file', file)
             }
             
-            const result = await createCompanyList(formData)
-            
-            if (result.success) {
-                // Reset form
-                setListName('')
-                setDescription('')
-                setLinks([''])
-                setFile(null)
-                setErrors({})
-                alert('リストが正常に作成されました！')
-            }
+            await createCompanyList(formData)
+            // createCompanyListはリダイレクトするので、ここには到達しない
         } catch (error) {
             console.error('Error creating list:', error)
             setErrors({ submit: 'リスト作成中にエラーが発生しました。' })
