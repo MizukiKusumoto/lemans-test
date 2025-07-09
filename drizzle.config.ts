@@ -8,6 +8,6 @@ export default defineConfig({
     out: "./utils/db/migrations",
     dialect: "postgresql",
     dbCredentials: {
-        url: process.env.DATABASE_URL!,
+        url: process.env.DATABASE_URL + "?sslmode=require",
     },
 });

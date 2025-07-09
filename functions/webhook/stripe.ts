@@ -18,7 +18,9 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
     console.log('Webhook received:', response)
     
     // データベース接続
-    const connection = postgres(env.DATABASE_URL)
+    const connection = postgres(process.env.DATABASE_URL!, {
+      ssl: 'require',
+    })
     const db = drizzle(connection)
     
     // Stripe webhook処理
